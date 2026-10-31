@@ -1,5 +1,9 @@
 import { getToken, clearToken } from '../lib/authStorage.js';
 
+// Fired when a protected request is rejected with 401, so AuthContext can log the
+// admin out of the UI (the token itself is already cleared below).
+export const UNAUTHORIZED_EVENT = 'hunardesk:unauthorized';
+
 const API_URL = (import.meta.env.VITE_API_URL ?? 'http://localhost:5000').replace(/\/+$/, '');
 
 // Thrown for every failed request, so components only need one catch block.
@@ -56,7 +60,10 @@ export async function apiRequest(path, { method = 'GET', body, params, auth = fa
 
   if (!response.ok) {
     // A rejected token on a protected route means the session is over.
-    if (response.status === 401 && auth) clearToken();
+    if (response.status === 401 && auth) {
+      clearToken();
+      window.dispatchEvent(new Event(UNAUTHORIZED_EVENT));
+    }
 
     throw new ApiError(
       payload?.message ?? 'Something went wrong. Please try again.',
