@@ -1,0 +1,31 @@
+# Render Blueprint for the HunarDesk API (the React frontend is hosted on Vercel).
+# Render dashboard -> New -> Blueprint -> pick this repository.
+# Render asks you for the two values marked "sync: false" because they are secrets.
+services:
+  - type: web
+    name: hunardesk-api
+    runtime: node
+    rootDir: backend
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+      # Supabase Session pooler URI. Enter it in the Render dashboard, never in this file.
+      - key: DATABASE_URL
+        sync: false
+      # Render creates a random secret for you (long enough for the 32-character rule).
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 8h
+      - key: BCRYPT_SALT_ROUNDS
+        value: "12"
+      # Your Vercel URL, e.g. https://hunardesk.vercel.app (no trailing slash).
+      - key: CLIENT_URL
+        sync: false
