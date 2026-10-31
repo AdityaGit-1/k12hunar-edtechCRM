@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+/* Design tokens. Every colour and the font used in the app are defined here,
+   so the look can be changed in one place. Tailwind turns each --color-*
+   variable into utilities such as bg-brand-700 and text-muted. */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-brand-50: #eef7f5;
+  --color-brand-100: #d5ece7;
+  --color-brand-600: #167065;
+  --color-brand-700: #0f5a51;
+  --color-brand-800: #0d4740;
+
+  --color-accent-500: #e0922f;
+
+  --color-ink: #172026;
+  --color-muted: #5b6770;
+  --color-line: #dfe3e1;
+  --color-canvas: #f6f5f1;
+
+  --color-danger: #b42318;
+  --color-danger-50: #fef3f2;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* Dropdowns use the browser's native control (best on mobile),
+     with our own chevron so they match the text inputs. */
+  .control-select {
+    appearance: none;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%235b6770' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 7.5l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+  }
+}
