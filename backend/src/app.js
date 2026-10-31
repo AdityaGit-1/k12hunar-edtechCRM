@@ -3,6 +3,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import { env } from './config/env.js';
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
+import inquiryRoutes from './routes/inquiryRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import adminInquiryRoutes from './routes/adminInquiryRoutes.js';
 
 const app = express();
 
@@ -28,7 +31,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Route modules (inquiries, auth, admin) are mounted here in Batch 2.
+app.use('/api/inquiries', inquiryRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/admin/inquiries', adminInquiryRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

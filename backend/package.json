@@ -10,7 +10,8 @@
   },
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "seed:admin": "node scripts/seedAdmin.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
