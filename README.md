@@ -7,8 +7,7 @@ HunarDesk lets parents, students and schools send inquiries to an education orga
 - **Secure admin login**: passwords hashed with **bcrypt**, sessions with **JWT** (no Supabase Auth).
 - **Protected dashboard**: statistics, filters (category, user type, status), search by name or phone, pagination, and status updates.
 
-**Live demo:** `https://YOUR-APP.vercel.app` &nbsp;|&nbsp; **API:** `https://YOUR-API.onrender.com/api/health`
-*(replace with your real links after deployment, see `docs/DEPLOYMENT.md`)*
+**Live demo:** `https://hunar-edtech-crm.vercel.app/` &nbsp;|&nbsp; **API:** `https://hunardesk-api.onrender.com/api/health`
 
 ## Tech stack
 
@@ -88,7 +87,6 @@ Open `backend/.env` and fill in:
 | `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Credentials for the first admin (password 8-72 characters). |
 | `CLIENT_URL` | `http://localhost:5173` locally. Comma-separate several origins if needed. |
 
-`.env` is listed in `.gitignore` and must never be committed.
 
 ### 3. Install, create the admin, start the API
 
