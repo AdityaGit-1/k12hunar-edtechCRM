@@ -55,7 +55,6 @@ hunardesk/
 ├── docs/
 │   ├── TESTING.md              Manual test checklist
 │   ├── DEPLOYMENT.md           Render + Vercel steps
-│   └── INTERVIEW_NOTES.md      Design decisions and likely questions
 └── render.yaml                 Render blueprint for the backend
 ```
 
